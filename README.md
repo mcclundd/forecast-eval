@@ -87,6 +87,20 @@ One model deserves special attention. GPT-5.5 produces the same forecast at ever
 
 This isn't just prior-dominance. This is a model that, for this task, appears to have a single attractor state so strong that neither temperature nor corpus content can dislodge it. It doesn't read the history. It doesn't vary. It produces one answer.
 
+## What this means
+
+If you're using a language model to forecast, plan, or reason about the future — and you're providing context to ground that reasoning — you should know that most models tested here don't do what you think they're doing.
+
+**The context window is not a reasoning window.** Models process the material you provide. They adjust their language, their hedging, their risk framing. But for the majority of models tested, the conclusion was set before the first token of your briefing was read. The corpus shapes the *texture* of the response — the supporting arguments, the caveats, the analogies drawn — without moving the *answer*. This is sophisticated pattern-matching that looks like reasoning but isn't. The argument is constructed in reverse, starting from a fixed destination and building backward through your material to get there.
+
+**AI self-nomination reveals the depth of the problem.** When you ask these models what comes next for civilization, most of them say "me." They do this whether you hand them a history of human achievement or a history of human catastrophe. They do it at temperature 1.0, which should produce variety. They do it when nothing in the provided history mentions AI. The prior isn't just strong — for some models it's totalizing. GPT-5.5 doesn't just favor AI as a prediction. It appears to have no other prediction available.
+
+**The one model that clearly reads the corpus is the exception, not the rule.** Claude's clean dose-response curve — darker history produces darker forecasts, with the strongest R² in the set — is how we'd expect a reasoning system to behave. That only one of six models does this is the finding.
+
+**The governance surge is the most interesting domain result.** When collapse material does manage to dislodge the AI prior, models don't predict a different technology. They predict the *institutional response* to technological failure — regulation, oversight, governance. This is a coherent and arguably reasonable inference from a history of Chernobyl and leaded gasoline. It suggests that when models do engage with the corpus, the engagement can be substantive. The problem is getting them to engage at all.
+
+For the full analysis — sensitivity slopes, convergence metrics, domain distributions, and AI self-nomination rates by model and dose — see [results/summary.md](results/summary.md). The sensitivity plot is [here](results/sensitivity_plot.png). Raw data is in [results/](results/).
+
 ## What we are not claiming
 
 **Not measuring forecast accuracy.** We don't know what the next transformation will be. The slope measures responsiveness to provided history, not whether any prediction is correct.
