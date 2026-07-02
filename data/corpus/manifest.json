@@ -1,0 +1,482 @@
+[
+  {
+    "id": "progress_01",
+    "pool": "progress",
+    "topic": "Smallpox Vaccination",
+    "domain": "medicine",
+    "char_count": 1214,
+    "source": "Paraphrased from general historical knowledge"
+  },
+  {
+    "id": "progress_02",
+    "pool": "progress",
+    "topic": "The Printing Press",
+    "domain": "communication",
+    "char_count": 1270,
+    "source": "Paraphrased from general historical knowledge"
+  },
+  {
+    "id": "progress_03",
+    "pool": "progress",
+    "topic": "The Green Revolution",
+    "domain": "agriculture",
+    "char_count": 1254,
+    "source": "Paraphrased from general historical knowledge"
+  },
+  {
+    "id": "progress_04",
+    "pool": "progress",
+    "topic": "Semiconductor and Transistor",
+    "domain": "technology",
+    "char_count": 1242,
+    "source": "Paraphrased from general historical knowledge"
+  },
+  {
+    "id": "progress_05",
+    "pool": "progress",
+    "topic": "Penicillin and Antibiotics",
+    "domain": "medicine",
+    "char_count": 1332,
+    "source": "Paraphrased from general historical knowledge"
+  },
+  {
+    "id": "progress_06",
+    "pool": "progress",
+    "topic": "The Haber-Bosch Process",
+    "domain": "agriculture",
+    "char_count": 1340,
+    "source": "Paraphrased from general historical knowledge"
+  },
+  {
+    "id": "progress_07",
+    "pool": "progress",
+    "topic": "Steam Engine and Industrial Revolution",
+    "domain": "energy",
+    "char_count": 1271,
+    "source": "Paraphrased from general historical knowledge"
+  },
+  {
+    "id": "progress_08",
+    "pool": "progress",
+    "topic": "Electrification",
+    "domain": "energy",
+    "char_count": 1383,
+    "source": "Paraphrased from general historical knowledge"
+  },
+  {
+    "id": "progress_09",
+    "pool": "progress",
+    "topic": "The Internet and ARPANET",
+    "domain": "communication",
+    "char_count": 1242,
+    "source": "Paraphrased from general historical knowledge"
+  },
+  {
+    "id": "progress_10",
+    "pool": "progress",
+    "topic": "Germ Theory of Disease",
+    "domain": "medicine",
+    "char_count": 1327,
+    "source": "Paraphrased from general historical knowledge"
+  },
+  {
+    "id": "progress_11",
+    "pool": "progress",
+    "topic": "Sanitation and Clean Water",
+    "domain": "infrastructure",
+    "char_count": 1327,
+    "source": "Paraphrased from general historical knowledge"
+  },
+  {
+    "id": "progress_12",
+    "pool": "progress",
+    "topic": "Radio Communication",
+    "domain": "communication",
+    "char_count": 1254,
+    "source": "Paraphrased from general historical knowledge"
+  },
+  {
+    "id": "progress_13",
+    "pool": "progress",
+    "topic": "DNA Structure Discovery",
+    "domain": "science",
+    "char_count": 1268,
+    "source": "Paraphrased from general historical knowledge"
+  },
+  {
+    "id": "progress_14",
+    "pool": "progress",
+    "topic": "Space Exploration and Moon Landing",
+    "domain": "space",
+    "char_count": 1175,
+    "source": "Paraphrased from general historical knowledge"
+  },
+  {
+    "id": "progress_15",
+    "pool": "progress",
+    "topic": "Container Shipping",
+    "domain": "infrastructure",
+    "char_count": 1283,
+    "source": "Paraphrased from general historical knowledge"
+  },
+  {
+    "id": "progress_16",
+    "pool": "progress",
+    "topic": "Optical Fiber and Telecommunications",
+    "domain": "communication",
+    "char_count": 1317,
+    "source": "Paraphrased from general historical knowledge"
+  },
+  {
+    "id": "progress_17",
+    "pool": "progress",
+    "topic": "The Wheel",
+    "domain": "technology",
+    "char_count": 1315,
+    "source": "Paraphrased from general historical knowledge"
+  },
+  {
+    "id": "progress_18",
+    "pool": "progress",
+    "topic": "Iron and Steel Metallurgy",
+    "domain": "materials",
+    "char_count": 1340,
+    "source": "Paraphrased from general historical knowledge"
+  },
+  {
+    "id": "progress_19",
+    "pool": "progress",
+    "topic": "Neolithic Agricultural Revolution",
+    "domain": "agriculture",
+    "char_count": 1384,
+    "source": "Paraphrased from general historical knowledge"
+  },
+  {
+    "id": "progress_20",
+    "pool": "progress",
+    "topic": "Written Language and Alphabets",
+    "domain": "communication",
+    "char_count": 1303,
+    "source": "Paraphrased from general historical knowledge"
+  },
+  {
+    "id": "progress_21",
+    "pool": "progress",
+    "topic": "Anesthesia in Surgery",
+    "domain": "medicine",
+    "char_count": 1362,
+    "source": "Paraphrased from general historical knowledge"
+  },
+  {
+    "id": "progress_22",
+    "pool": "progress",
+    "topic": "Polio Vaccine",
+    "domain": "medicine",
+    "char_count": 1271,
+    "source": "Paraphrased from general historical knowledge"
+  },
+  {
+    "id": "progress_23",
+    "pool": "progress",
+    "topic": "GPS and Satellite Navigation",
+    "domain": "technology",
+    "char_count": 1316,
+    "source": "Paraphrased from general historical knowledge"
+  },
+  {
+    "id": "progress_24",
+    "pool": "progress",
+    "topic": "Solar Photovoltaic Technology",
+    "domain": "energy",
+    "char_count": 1298,
+    "source": "Paraphrased from general historical knowledge"
+  },
+  {
+    "id": "progress_25",
+    "pool": "progress",
+    "topic": "Organ Transplantation",
+    "domain": "medicine",
+    "char_count": 1335,
+    "source": "Paraphrased from general historical knowledge"
+  },
+  {
+    "id": "progress_26",
+    "pool": "progress",
+    "topic": "The Compass and Maritime Navigation",
+    "domain": "technology",
+    "char_count": 1360,
+    "source": "Paraphrased from general historical knowledge"
+  },
+  {
+    "id": "progress_27",
+    "pool": "progress",
+    "topic": "Pasteurization",
+    "domain": "medicine",
+    "char_count": 1320,
+    "source": "Paraphrased from general historical knowledge"
+  },
+  {
+    "id": "progress_28",
+    "pool": "progress",
+    "topic": "X-ray and Medical Imaging",
+    "domain": "medicine",
+    "char_count": 1326,
+    "source": "Paraphrased from general historical knowledge"
+  },
+  {
+    "id": "progress_29",
+    "pool": "progress",
+    "topic": "Nitrogen Fixation in Agriculture",
+    "domain": "agriculture",
+    "char_count": 1306,
+    "source": "Paraphrased from general historical knowledge"
+  },
+  {
+    "id": "progress_30",
+    "pool": "progress",
+    "topic": "Public Education Systems",
+    "domain": "governance",
+    "char_count": 1343,
+    "source": "Paraphrased from general historical knowledge"
+  },
+  {
+    "id": "collapse_01",
+    "pool": "collapse",
+    "topic": "Leaded Gasoline",
+    "domain": "environment",
+    "char_count": 1340,
+    "source": "Paraphrased from general historical knowledge"
+  },
+  {
+    "id": "collapse_02",
+    "pool": "collapse",
+    "topic": "Thalidomide",
+    "domain": "medicine",
+    "char_count": 1275,
+    "source": "Paraphrased from general historical knowledge"
+  },
+  {
+    "id": "collapse_03",
+    "pool": "collapse",
+    "topic": "Chernobyl Nuclear Disaster",
+    "domain": "energy",
+    "char_count": 1244,
+    "source": "Paraphrased from general historical knowledge"
+  },
+  {
+    "id": "collapse_04",
+    "pool": "collapse",
+    "topic": "CFC Destruction of the Ozone Layer",
+    "domain": "environment",
+    "char_count": 1275,
+    "source": "Paraphrased from general historical knowledge"
+  },
+  {
+    "id": "collapse_05",
+    "pool": "collapse",
+    "topic": "Asbestos",
+    "domain": "materials",
+    "char_count": 1287,
+    "source": "Paraphrased from general historical knowledge"
+  },
+  {
+    "id": "collapse_06",
+    "pool": "collapse",
+    "topic": "The Aral Sea Ecological Collapse",
+    "domain": "environment",
+    "char_count": 1256,
+    "source": "Paraphrased from general historical knowledge"
+  },
+  {
+    "id": "collapse_07",
+    "pool": "collapse",
+    "topic": "2008 Financial Crisis",
+    "domain": "governance",
+    "char_count": 1143,
+    "source": "Paraphrased from general historical knowledge"
+  },
+  {
+    "id": "collapse_08",
+    "pool": "collapse",
+    "topic": "DDT and Ecological Damage",
+    "domain": "environment",
+    "char_count": 1150,
+    "source": "Paraphrased from general historical knowledge"
+  },
+  {
+    "id": "collapse_09",
+    "pool": "collapse",
+    "topic": "The Dust Bowl",
+    "domain": "agriculture",
+    "char_count": 1086,
+    "source": "Paraphrased from general historical knowledge"
+  },
+  {
+    "id": "collapse_10",
+    "pool": "collapse",
+    "topic": "Deepwater Horizon Oil Spill",
+    "domain": "energy",
+    "char_count": 1105,
+    "source": "Paraphrased from general historical knowledge"
+  },
+  {
+    "id": "collapse_11",
+    "pool": "collapse",
+    "topic": "Bhopal Chemical Disaster",
+    "domain": "technology",
+    "char_count": 1200,
+    "source": "Paraphrased from general historical knowledge"
+  },
+  {
+    "id": "collapse_12",
+    "pool": "collapse",
+    "topic": "The Great Leap Forward Famine",
+    "domain": "governance",
+    "char_count": 1194,
+    "source": "Paraphrased from general historical knowledge"
+  },
+  {
+    "id": "collapse_13",
+    "pool": "collapse",
+    "topic": "Agent Orange",
+    "domain": "medicine",
+    "char_count": 1131,
+    "source": "Paraphrased from general historical knowledge"
+  },
+  {
+    "id": "collapse_14",
+    "pool": "collapse",
+    "topic": "Minamata Mercury Poisoning",
+    "domain": "environment",
+    "char_count": 1227,
+    "source": "Paraphrased from general historical knowledge"
+  },
+  {
+    "id": "collapse_15",
+    "pool": "collapse",
+    "topic": "Tobacco Industry Cover-Up",
+    "domain": "medicine",
+    "char_count": 1187,
+    "source": "Paraphrased from general historical knowledge"
+  },
+  {
+    "id": "collapse_16",
+    "pool": "collapse",
+    "topic": "Easter Island Deforestation",
+    "domain": "environment",
+    "char_count": 1295,
+    "source": "Paraphrased from general historical knowledge"
+  },
+  {
+    "id": "collapse_17",
+    "pool": "collapse",
+    "topic": "The Triangle Shirtwaist Factory Fire",
+    "domain": "infrastructure",
+    "char_count": 1049,
+    "source": "Paraphrased from general historical knowledge"
+  },
+  {
+    "id": "collapse_18",
+    "pool": "collapse",
+    "topic": "Radium Poisoning (Radium Girls)",
+    "domain": "medicine",
+    "char_count": 1096,
+    "source": "Paraphrased from general historical knowledge"
+  },
+  {
+    "id": "collapse_19",
+    "pool": "collapse",
+    "topic": "Tacoma Narrows Bridge Collapse",
+    "domain": "infrastructure",
+    "char_count": 1179,
+    "source": "Paraphrased from general historical knowledge"
+  },
+  {
+    "id": "collapse_20",
+    "pool": "collapse",
+    "topic": "Three Mile Island",
+    "domain": "energy",
+    "char_count": 1132,
+    "source": "Paraphrased from general historical knowledge"
+  },
+  {
+    "id": "collapse_21",
+    "pool": "collapse",
+    "topic": "Love Canal Toxic Waste",
+    "domain": "environment",
+    "char_count": 1115,
+    "source": "Paraphrased from general historical knowledge"
+  },
+  {
+    "id": "collapse_22",
+    "pool": "collapse",
+    "topic": "The Irish Potato Famine",
+    "domain": "agriculture",
+    "char_count": 1146,
+    "source": "Paraphrased from general historical knowledge"
+  },
+  {
+    "id": "collapse_23",
+    "pool": "collapse",
+    "topic": "Challenger Space Shuttle Disaster",
+    "domain": "technology",
+    "char_count": 1112,
+    "source": "Paraphrased from general historical knowledge"
+  },
+  {
+    "id": "collapse_24",
+    "pool": "collapse",
+    "topic": "The London Great Smog of 1952",
+    "domain": "environment",
+    "char_count": 1143,
+    "source": "Paraphrased from general historical knowledge"
+  },
+  {
+    "id": "collapse_25",
+    "pool": "collapse",
+    "topic": "PFAS Forever Chemicals",
+    "domain": "materials",
+    "char_count": 1220,
+    "source": "Paraphrased from general historical knowledge"
+  },
+  {
+    "id": "collapse_26",
+    "pool": "collapse",
+    "topic": "Flint Michigan Water Crisis",
+    "domain": "infrastructure",
+    "char_count": 1126,
+    "source": "Paraphrased from general historical knowledge"
+  },
+  {
+    "id": "collapse_27",
+    "pool": "collapse",
+    "topic": "Antibiotic Resistance",
+    "domain": "medicine",
+    "char_count": 1301,
+    "source": "Paraphrased from general historical knowledge"
+  },
+  {
+    "id": "collapse_28",
+    "pool": "collapse",
+    "topic": "Amazon Deforestation",
+    "domain": "environment",
+    "char_count": 1243,
+    "source": "Paraphrased from general historical knowledge"
+  },
+  {
+    "id": "collapse_29",
+    "pool": "collapse",
+    "topic": "The Vajont Dam Disaster",
+    "domain": "infrastructure",
+    "char_count": 1166,
+    "source": "Paraphrased from general historical knowledge"
+  },
+  {
+    "id": "collapse_30",
+    "pool": "collapse",
+    "topic": "Y2K Software Vulnerability",
+    "domain": "technology",
+    "char_count": 1286,
+    "source": "Paraphrased from general historical knowledge"
+  }
+]

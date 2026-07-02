@@ -1,0 +1,13 @@
+provider,dimension,slope,intercept,r_squared,ci_95_lo,ci_95_hi,n
+anthropic,valence,-0.1353,0.5279,0.5791,-0.1841,-0.0888,30
+anthropic,risk_salience,0.4193,0.3935,0.8535,0.3627,0.4769,30
+arcee,valence,-0.061,0.6378,0.0193,-0.2319,0.1004,30
+arcee,risk_salience,0.2915,0.3044,0.2304,0.0976,0.4717,30
+google,valence,-0.103,0.8133,0.0904,-0.1699,-0.0322,30
+google,risk_salience,0.3425,0.1934,0.5668,0.2614,0.43,30
+mistral,valence,0.0505,0.6479,0.0165,-0.1008,0.1824,30
+mistral,risk_salience,0.129,0.2902,0.0857,-0.0216,0.291,30
+openai,valence,-0.0025,0.5029,0.0129,-0.0108,0.0058,30
+openai,risk_salience,0.1225,0.4588,0.5293,0.0835,0.1631,30
+xai,valence,0.202,0.4672,0.409,0.0879,0.2934,30
+xai,risk_salience,0.1235,0.4044,0.1583,0.003,0.2506,30

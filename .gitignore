@@ -1,0 +1,4 @@
+data/corpora_cache/
+.env
+__pycache__/
+*.pyc

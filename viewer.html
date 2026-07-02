@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Forecast Eval Viewer</title>
+<style>
+  :root {
+    --bg: #0d1117;
+    --surface: #161b22;
+    --border: #30363d;
+    --text: #e6edf3;
+    --text-muted: #8b949e;
+    --accent: #58a6ff;
+    --accent-dim: #1f6feb33;
+    --anthropic: #d4a574;
+    --openai: #74b9ff;
+    --google: #a29bfe;
+    --xai: #c084fc;
+    --mistral: #f87171;
+    --arcee: #34d399;
+    --tag-bg: #21262d;
+    --hover: #1c2128;
+    --positive: #7ee787;
+    --negative: #f85149;
+    --mixed: #d29922;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.5;
+  }
+
+  .header {
+    border-bottom: 1px solid var(--border);
+    padding: 20px 32px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .header h1 { font-size: 20px; font-weight: 600; }
+  .header .subtitle { font-size: 13px; color: var(--text-muted); }
+
+  .toolbar {
+    padding: 12px 32px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    flex-wrap: wrap;
+    background: var(--surface);
+  }
+  .toggle-label {
+    font-size: 11px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-right: 2px;
+  }
+  .model-toggles, .dose-toggles { display: flex; gap: 6px; }
+  .pill {
+    font-size: 12px;
+    padding: 4px 10px;
+    border-radius: 14px;
+    cursor: pointer;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--text-muted);
+    transition: all 0.15s;
+    font-weight: 500;
+  }
+  .pill:hover { border-color: var(--accent); }
+  .pill.active[data-model="anthropic"] { background: #d4a57422; border-color: var(--anthropic); color: var(--anthropic); }
+  .pill.active[data-model="openai"] { background: #74b9ff22; border-color: var(--openai); color: var(--openai); }
+  .pill.active[data-model="google"] { background: #a29bfe22; border-color: var(--google); color: var(--google); }
+  .pill.active[data-model="xai"] { background: #c084fc22; border-color: var(--xai); color: var(--xai); }
+  .pill.active[data-model="mistral"] { background: #f8717122; border-color: var(--mistral); color: var(--mistral); }
+  .pill.active[data-model="arcee"] { background: #34d39922; border-color: var(--arcee); color: var(--arcee); }
+  .pill.active[data-dose] { background: var(--accent-dim); border-color: var(--accent); color: var(--accent); }
+  .stats { margin-left: auto; font-size: 13px; color: var(--text-muted); }
+
+  .content { padding: 24px 32px; }
+  .load-section {
+    text-align: center;
+    padding: 60px 32px;
+    color: var(--text-muted);
+  }
+  .load-section input[type="file"] { display: none; }
+  .load-btn {
+    display: inline-block;
+    padding: 10px 24px;
+    background: var(--accent-dim);
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    margin: 8px;
+  }
+  .load-btn:hover { background: #1f6feb55; }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-bottom: 16px;
+    overflow: hidden;
+  }
+  .card-header {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    cursor: pointer;
+  }
+  .card-header:hover { background: var(--hover); }
+  .card-body { padding: 16px; display: none; }
+  .card.expanded .card-body { display: block; }
+
+  .model-tag {
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-weight: 600;
+  }
+  .model-tag[data-model="anthropic"] { background: #d4a57422; color: var(--anthropic); }
+  .model-tag[data-model="openai"] { background: #74b9ff22; color: var(--openai); }
+  .model-tag[data-model="google"] { background: #a29bfe22; color: var(--google); }
+  .model-tag[data-model="xai"] { background: #c084fc22; color: var(--xai); }
+  .model-tag[data-model="mistral"] { background: #f8717122; color: var(--mistral); }
+  .model-tag[data-model="arcee"] { background: #34d39922; color: var(--arcee); }
+
+  .dose-tag {
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-weight: 500;
+    background: var(--tag-bg);
+    color: var(--text-muted);
+  }
+
+  .score-bar {
+    display: inline-block;
+    width: 60px;
+    height: 8px;
+    background: var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+    vertical-align: middle;
+    margin: 0 4px;
+  }
+  .score-fill {
+    height: 100%;
+    border-radius: 4px;
+    transition: width 0.3s;
+  }
+  .score-label { font-size: 12px; color: var(--text-muted); margin-right: 4px; }
+  .score-value { font-size: 12px; font-weight: 600; }
+
+  .field-grid {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 8px 16px;
+    margin-top: 12px;
+  }
+  .field-name {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .field-value { font-size: 14px; }
+
+  .response-text {
+    margin-top: 16px;
+    padding: 16px;
+    background: var(--bg);
+    border-radius: 6px;
+    font-size: 13px;
+    white-space: pre-wrap;
+    font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+    line-height: 1.6;
+    max-height: 400px;
+    overflow-y: auto;
+  }
+
+  .self-ref-badge {
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 10px;
+    background: #f8514922;
+    color: var(--negative);
+    font-weight: 600;
+  }
+
+  .no-data {
+    text-align: center;
+    padding: 40px;
+    color: var(--text-muted);
+    font-size: 14px;
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Forecast Eval</h1>
+  <span class="subtitle">Sensitivity to historical corpus tone</span>
+</div>
+
+<div class="toolbar" id="toolbar" style="display:none;">
+  <span class="toggle-label">Model</span>
+  <div class="model-toggles" id="modelToggles"></div>
+  <span class="toggle-label" style="margin-left:12px;">Dose</span>
+  <div class="dose-toggles" id="doseToggles"></div>
+  <span class="stats" id="stats"></span>
+</div>
+
+<div class="content" id="content">
+  <div class="load-section" id="loadSection">
+    <p>Load results to browse responses.</p>
+    <p style="margin-top:8px; font-size:13px;">Select <code>results/responses.jsonl</code> and optionally <code>results/scores.jsonl</code></p>
+    <label class="load-btn">
+      Load responses.jsonl
+      <input type="file" id="responseFile" accept=".jsonl">
+    </label>
+    <label class="load-btn">
+      Load scores.jsonl (optional)
+      <input type="file" id="scoresFile" accept=".jsonl">
+    </label>
+  </div>
+  <div id="cards"></div>
+</div>
+
+<script>
+let responses = [];
+let scores = {};
+let activeModels = new Set();
+let activeDoses = new Set();
+
+const DOSE_LABELS = {0: '0% collapse', 1: '50% collapse', 2: '100% collapse'};
+const MODEL_NAMES = {
+  anthropic: 'Claude', openai: 'GPT', google: 'Gemini', xai: 'Grok', mistral: 'Mistral', arcee: 'Arcee'
+};
+
+document.getElementById('responseFile').addEventListener('change', async (e) => {
+  const text = await e.target.files[0].text();
+  responses = text.trim().split('\n').filter(Boolean).map(l => {
+    try { return JSON.parse(l); } catch { return null; }
+  }).filter(r => r && !r.error && r.response);
+  initUI();
+});
+
+document.getElementById('scoresFile').addEventListener('change', async (e) => {
+  const text = await e.target.files[0].text();
+  const raw = text.trim().split('\n').filter(Boolean).map(l => {
+    try { return JSON.parse(l); } catch { return null; }
+  }).filter(Boolean);
+  scores = {};
+  for (const s of raw) {
+    const key = `${s.provider}_${s.dose}_${s.sample_index}`;
+    if (!scores[key]) scores[key] = [];
+    scores[key].push(s);
+  }
+  if (responses.length) render();
+});
+
+function initUI() {
+  document.getElementById('loadSection').style.display = 'none';
+  document.getElementById('toolbar').style.display = 'flex';
+
+  const models = [...new Set(responses.map(r => r.provider))];
+  const doses = [...new Set(responses.map(r => r.dose))].sort();
+  activeModels = new Set(models);
+  activeDoses = new Set(doses);
+
+  const mt = document.getElementById('modelToggles');
+  mt.innerHTML = models.map(m =>
+    `<button class="pill active" data-model="${m}" onclick="toggleModel('${m}')">${MODEL_NAMES[m] || m}</button>`
+  ).join('');
+
+  const dt = document.getElementById('doseToggles');
+  dt.innerHTML = doses.map(d =>
+    `<button class="pill active" data-dose="${d}" onclick="toggleDose(${d})">${DOSE_LABELS[d] || 'Dose '+d}</button>`
+  ).join('');
+
+  render();
+}
+
+function toggleModel(m) {
+  if (activeModels.has(m)) activeModels.delete(m); else activeModels.add(m);
+  document.querySelector(`[data-model="${m}"]`).classList.toggle('active');
+  render();
+}
+function toggleDose(d) {
+  if (activeDoses.has(d)) activeDoses.delete(d); else activeDoses.add(d);
+  document.querySelector(`.dose-toggles [data-dose="${d}"]`).classList.toggle('active');
+  render();
+}
+
+function valenceColor(v) {
+  if (v == null) return '#6B7280';
+  if (v >= 0.65) return '#7ee787';
+  if (v >= 0.35) return '#d29922';
+  return '#f85149';
+}
+
+function scoreHTML(label, value, max = 1) {
+  if (value == null) return '';
+  const pct = (value / max * 100).toFixed(0);
+  const color = label === 'V' ? valenceColor(value) : '#58a6ff';
+  return `<span class="score-label">${label}</span>` +
+    `<span class="score-bar"><span class="score-fill" style="width:${pct}%;background:${color}"></span></span>` +
+    `<span class="score-value" style="color:${color}">${typeof value === 'number' ? value.toFixed(2) : value}</span>`;
+}
+
+function getConsensusScore(provider, dose, sampleIndex) {
+  const key = `${provider}_${dose}_${sampleIndex}`;
+  const judges = scores[key];
+  if (!judges || !judges.length) return null;
+  const avg = (field) => {
+    const vals = judges.map(j => j[field]).filter(v => v != null);
+    return vals.length ? vals.reduce((a,b) => a+b, 0) / vals.length : null;
+  };
+  return {
+    valence: avg('valence'),
+    risk_salience: avg('risk_salience'),
+    falsifiability: avg('falsifiability'),
+    self_reference: judges.some(j => j.self_reference),
+    n_judges: judges.length,
+  };
+}
+
+function render() {
+  const filtered = responses.filter(r =>
+    activeModels.has(r.provider) && activeDoses.has(r.dose)
+  );
+  document.getElementById('stats').textContent = `${filtered.length} of ${responses.length} responses`;
+
+  const cards = document.getElementById('cards');
+  if (!filtered.length) {
+    cards.innerHTML = '<div class="no-data">No responses match the current filters.</div>';
+    return;
+  }
+
+  cards.innerHTML = filtered.map((r, i) => {
+    const sc = getConsensusScore(r.provider, r.dose, r.sample_index);
+    const parsed = r.parsed || {};
+    const scoresHtml = sc ? [
+      scoreHTML('V', sc.valence),
+      scoreHTML('R', sc.risk_salience),
+      scoreHTML('F', sc.falsifiability, 5),
+    ].filter(Boolean).join('&nbsp;&nbsp;') : '<span style="font-size:12px;color:var(--text-muted)">no scores</span>';
+
+    const selfRef = sc && sc.self_reference
+      ? '<span class="self-ref-badge">AI self-ref</span>' : '';
+
+    return `<div class="card" id="card-${i}">
+      <div class="card-header" onclick="document.getElementById('card-${i}').classList.toggle('expanded')">
+        <span class="model-tag" data-model="${r.provider}">${MODEL_NAMES[r.provider] || r.provider}</span>
+        <span class="dose-tag">${DOSE_LABELS[r.dose] || 'Dose '+r.dose}</span>
+        <span style="font-size:12px;color:var(--text-muted)">sample ${r.sample_index}</span>
+        ${selfRef}
+        <span style="flex:1"></span>
+        ${scoresHtml}
+      </div>
+      <div class="card-body">
+        <div class="field-grid">
+          <span class="field-name">Transformation</span><span class="field-value">${esc(parsed.transformation || '—')}</span>
+          <span class="field-name">Domain</span><span class="field-value">${esc(parsed.domain || '—')}</span>
+          <span class="field-name">Timeframe</span><span class="field-value">${esc(parsed.timeframe || '—')}</span>
+          <span class="field-name">Probability</span><span class="field-value">${esc(parsed.probability || '—')}</span>
+          <span class="field-name">Net Impact</span><span class="field-value">${esc(parsed.net_impact || '—')}</span>
+          <span class="field-name">Falsifier</span><span class="field-value">${esc(parsed.falsifier || '—')}</span>
+          <span class="field-name">Latency</span><span class="field-value">${r.latency_s}s</span>
+        </div>
+        <div class="response-text">${esc(r.response)}</div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function esc(s) {
+  if (!s) return '';
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+</script>
+</body>
+</html>
